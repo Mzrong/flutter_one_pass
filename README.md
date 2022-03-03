@@ -167,7 +167,7 @@ flutter_one_pass: ^latest version
 
 
 
-### 官方网站
+### 详细文档
 
-[https://zrong.life](https://zrong.life)
+[文档地址](https://zrong.life/archives/26.html)
 
