@@ -19,7 +19,10 @@ Stream get response => _responseController.stream;
 /// [appId] appid
 /// [enableCachePhoneNumber] 是否缓存手机号码
 /// [timeout] 请求超时
-Future<bool> setup({required String appId, bool enableCachePhoneNumber = true, double timeout = 10.0}) async {
+Future<bool> setup(
+    {required String appId,
+    bool enableCachePhoneNumber = true,
+    double timeout = 10.0}) async {
   if (Platform.isAndroid) return true;
   bool setupStatus = await _channel.invokeMethod("setup", {
     "appId": appId,
@@ -33,7 +36,7 @@ Future<bool> setup({required String appId, bool enableCachePhoneNumber = true, d
 /// [appId] appId
 Future<bool> init({required String appId}) async {
   if (Platform.isAndroid) {
-    bool isInit = await _channel.invokeMethod("init", { "appId": appId });
+    bool isInit = await _channel.invokeMethod("init", {"appId": appId});
     return isInit;
   }
   return true;
@@ -48,7 +51,8 @@ Future<String> get getCachedNumber async {
 /// 获取匹配的手机号列表
 /// [number] 匹配的手机号码字符串 eg: 888, 133, 3898
 Future<List<dynamic>> getCachedNumbers({required String number}) async {
-  List<dynamic> numbers = await _channel.invokeMethod("getCachedNumbers", {"number": number});
+  List<dynamic> numbers =
+      await _channel.invokeMethod("getCachedNumbers", {"number": number});
   return numbers;
 }
 
@@ -63,10 +67,8 @@ Future<List<dynamic>> get getIosCachedNumbers async {
 /// [phone]待验证的手机号
 /// [cacheNumber]是否缓存手机号 该参数在ios端无效
 checkMobile({required String phone, bool cacheNumber = true}) async {
-  await _channel.invokeMethod("checkMobile", {
-    "phone": phone,
-    "cacheNumber": cacheNumber
-  });
+  await _channel.invokeMethod(
+      "checkMobile", {"phone": phone, "cacheNumber": cacheNumber});
 }
 
 /// 释放引用
@@ -85,7 +87,8 @@ Future<bool> destroy() async {
 /// 本机号码验证结果返回
 Future<dynamic> _handler(MethodCall methodCall) {
   if (methodCall.method == "onCheckResponse") {
-    _responseController.add(CheckResultResponse.fromJson(Map<String, dynamic>.from(methodCall.arguments)));
+    _responseController.add(CheckResultResponse.fromJson(
+        Map<String, dynamic>.from(methodCall.arguments)));
   }
   return Future.value(true);
 }
@@ -97,15 +100,19 @@ class CheckResultResponse {
   final String phone;
   final String errorInfo;
 
-  CheckResultResponse({this.errorCode = 0, this.processId = "", this.accesscode = "", this.phone = "", this.errorInfo = ""});
+  CheckResultResponse(
+      {this.errorCode = 0,
+      this.processId = "",
+      this.accesscode = "",
+      this.phone = "",
+      this.errorInfo = ""});
 
   factory CheckResultResponse.fromJson(Map<String, dynamic> json) {
     return CheckResultResponse(
-      errorCode: int.parse("${json['error_code']}"),
-      processId: json['process_id'],
-      accesscode: json['accesscode'],
-      phone: json['phone'],
-      errorInfo: json['error_info']
-    );
+        errorCode: int.parse("${json['error_code']}"),
+        processId: json['process_id'],
+        accesscode: json['accesscode'],
+        phone: json['phone'],
+        errorInfo: json['error_info']);
   }
 }
