@@ -1,7 +1,7 @@
 name: flutter_one_pass
 description: A new Flutter project.
 version: 0.0.1
-homepage: 
+homepage: https://github.com/Mzrong/flutter_one_pass
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
