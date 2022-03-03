@@ -32,14 +32,14 @@ class _MyAppState extends State<MyApp> {
       print(res.errorCode);
       print(res.errorInfo);
       print(res.accesscode);
-      print(res.process_id);
+      print(res.processId);
       print(res.phone);
 
       Map<String, dynamic> data = {
         "errorCode": res.accesscode,
         "errorInfo": res.errorInfo,
         "accesscode": res.accesscode,
-        "process_id": res.process_id,
+        "process_id": res.processId,
         "phone": res.phone
       };
 

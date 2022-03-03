@@ -1,6 +1,6 @@
 name: flutter_one_pass
-description: A new Flutter project.
-version: 0.0.1
+description: Geetest OnePass plugin, include Androud and iOS platform. use China mobile phone achieve quick log in.
+version: 0.0.2
 homepage: https://github.com/Mzrong/flutter_one_pass
 
 environment:

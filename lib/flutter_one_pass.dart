@@ -92,17 +92,17 @@ Future<dynamic> _handler(MethodCall methodCall) {
 
 class CheckResultResponse {
   final int errorCode;
-  final String process_id;
+  final String processId;
   final String accesscode;
   final String phone;
   final String errorInfo;
 
-  CheckResultResponse({this.errorCode = 0, this.process_id = "", this.accesscode = "", this.phone = "", this.errorInfo = ""});
+  CheckResultResponse({this.errorCode = 0, this.processId = "", this.accesscode = "", this.phone = "", this.errorInfo = ""});
 
   factory CheckResultResponse.fromJson(Map<String, dynamic> json) {
     return CheckResultResponse(
       errorCode: int.parse("${json['error_code']}"),
-      process_id: json['process_id'],
+      processId: json['process_id'],
       accesscode: json['accesscode'],
       phone: json['phone'],
       errorInfo: json['error_info']
