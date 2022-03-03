@@ -1,0 +1,31 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_one_pass (0.0.1):
+    - Flutter
+    - GTOneLoginSDK
+  - GTOneLoginSDK (2.3.8.2):
+    - GTOneLoginSDK/Main (= 2.3.8.2)
+  - GTOneLoginSDK/Main (2.3.8.2)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_one_pass (from `.symlinks/plugins/flutter_one_pass/ios`)
+
+SPEC REPOS:
+  trunk:
+    - GTOneLoginSDK
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_one_pass:
+    :path: ".symlinks/plugins/flutter_one_pass/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_one_pass: abb086b6821ed97800ea314d0fd60ca0f20fd5d4
+  GTOneLoginSDK: 96b6e04e17cb322b244fa173d11a41890c5f3f20
+
+PODFILE CHECKSUM: 77820230a2c0e250d1bf7694e7ea6c91a63c1edd
+
+COCOAPODS: 1.11.2
