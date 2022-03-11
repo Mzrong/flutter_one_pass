@@ -20,7 +20,7 @@ import kotlin.collections.HashMap
  * @email zengrong27@gmail.com
  * @website https://zrong.life
  */
-class cFlutterOnePassPlugin: FlutterPlugin, MethodCallHandler {
+class FlutterOnePassPlugin: FlutterPlugin, MethodCallHandler {
 
   private var tag: String = "| zrong.life | flutter_one_pass |"
 
