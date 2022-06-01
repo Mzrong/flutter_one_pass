@@ -57,17 +57,13 @@ class FlutterOnePassPlugin: FlutterPlugin, MethodCallHandler {
    */
   private fun init(@NonNull call: MethodCall, @NonNull result: Result) {
     try {
-      val map: HashMap<String, Any> = call.arguments<HashMap<String, Any>>()
+      val map: HashMap<String, Any>? = call.arguments<HashMap<String, Any>>()
 
-      if (!map.containsKey("appId")) {
+      if ("${map?.get("appId")}".isEmpty()) {
         throw Exception("[appId]不能为空")
       }
 
-      if ("${map["appId"]}".isEmpty()) {
-        throw Exception("[appId]不能为空")
-      }
-
-      OnePassHelper.with().init(context, "${map["appId"]}", 8000)
+      OnePassHelper.with().init(context, "${map?.get("appId")}", 8000)
       registerListener()
       Log.i(tag, "初始化成功")
       result.success(true)
@@ -97,17 +93,13 @@ class FlutterOnePassPlugin: FlutterPlugin, MethodCallHandler {
    */
   private fun getCachedNumbers(@NonNull call: MethodCall, @NonNull result: Result) {
     try {
-      val map: HashMap<String, Any> = call.arguments<HashMap<String, Any>>()
+      val map: HashMap<String, Any>? = call.arguments<HashMap<String, Any>>()
 
-      if (!map.containsKey("number")) {
+      if ("${map?.get("number")}".isEmpty()) {
         throw Exception("手机号码不能为空")
       }
 
-      if ("${map["number"]}".isEmpty()) {
-        throw Exception("手机号码不能为空")
-      }
-
-      val numbers: List<String> = OnePassHelper.with().getCachedNumbers("${map["number"]}")
+      val numbers: List<String> = OnePassHelper.with().getCachedNumbers("${map?.get("number")}")
       Log.i(tag, "匹配完成")
 
       result.success(numbers)
@@ -173,18 +165,14 @@ class FlutterOnePassPlugin: FlutterPlugin, MethodCallHandler {
    */
   private fun checkMobile(@NonNull call: MethodCall, @NonNull result: Result) {
     try {
-      val map: HashMap<String, Any> = call.arguments<HashMap<String, Any>>()
+      val map: HashMap<String, Any>? = call.arguments<HashMap<String, Any>>()
 
-      if (!map.containsKey("phone")) {
+      if ("${map?.get("phone")}".isEmpty()) {
         throw Exception("手机号码不能为空")
       }
 
-      if ("${map["phone"]}".isEmpty()) {
-        throw Exception("手机号码不能为空")
-      }
-
-      OnePassHelper.with().setCacheNumberEnable(map["cacheNumber"] as Boolean)
-      OnePassHelper.with().getToken("${map["phone"]}", onePassListener)
+      OnePassHelper.with().setCacheNumberEnable(map?.get("cacheNumber") as Boolean)
+      OnePassHelper.with().getToken("${map.get("phone")}", onePassListener)
     } catch (e: Exception) {
       Log.i(tag, "${e.message}")
     }
